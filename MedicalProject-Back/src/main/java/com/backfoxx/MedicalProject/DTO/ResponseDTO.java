@@ -1,4 +1,3 @@
-//HTTP응답으로 사용할 DTO
 package com.backfoxx.MedicalProject.DTO;
 
 import lombok.AllArgsConstructor;

@@ -20,9 +20,11 @@ import javax.persistence.Table;
 @Table(name = "Part")
 public class PartEntity {
     @Id
-    @GeneratedValue(generator = "system-uuid") //id �ڵ� ����
+    @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name="system-uuid", strategy="uuid")
     private String id;
+    private String userId;
+    private int day;
     private String part; //아픈 부위
     private String symptom; //증상
     private int intensity; //강도
