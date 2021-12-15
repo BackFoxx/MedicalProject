@@ -1,0 +1,18 @@
+//HTTP응답으로 사용할 DTO
+package com.backfoxx.MedicalProject.DTO;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class ResponseDTO<T> {
+    private String error;
+    private List<T> data;
+}
