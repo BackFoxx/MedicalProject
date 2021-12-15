@@ -1,4 +1,4 @@
-//PartEntityÀÇ DTO¹öÀü Å¬·¡½º
+//PartEntityì˜ DTOë²„ì „
 package com.backfoxx.MedicalProject.DTO;
 
 import com.backfoxx.MedicalProject.model.PartEntity;
@@ -12,12 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PartDTO {
+    private String id;
     private String part;
     private String symptom;
     private int intensity;
 
-    //PartEntityÀÇ ¿ä¼ÒµéÀ» DTO·Î ¹Ù²Ù´Â ÀÛ¾÷
+    //PartEntityë¥¼ DTOë¡œ ë³€í™˜
     public PartDTO(final PartEntity entity) {
+        this.id = entity.getId();
         this.part = entity.getPart();
         this.symptom = entity.getSymptom();;
         this.intensity = entity.getIntensity();

@@ -1,17 +1,29 @@
-//Áõ»ó¿¡ ´ëÇÑ µ¥ÀÌÅÍ¸¦ ´ãÀº ¿£Æ¼Æ¼
+//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ¼Æ¼
 package com.backfoxx.MedicalProject.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Entity
+@Table(name = "Part")
 public class PartEntity {
-    private String part; //Áõ»óÀÌ ÀÖ´Â ½ÅÃ¼ºÎÀ§
-    private String symptom; //Áõ»ó
-    private int intensity; //°­µµ
+    @Id
+    @GeneratedValue(generator = "system-uuid") //id ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
+    @GenericGenerator(name="system-uuid", strategy="uuid")
+    private String id;
+    private String part; //ì•„í”ˆ ë¶€ìœ„
+    private String symptom; //ì¦ìƒ
+    private int intensity; //ê°•ë„
 }
