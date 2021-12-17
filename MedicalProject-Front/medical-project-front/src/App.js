@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import './App.css';
-import Body from './BodySelect';
+import Body from './Controller';
 import BodyInput from './BodyInput';
 
 class App extends React.Component {
