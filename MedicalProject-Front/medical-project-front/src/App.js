@@ -1,28 +1,37 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import DaySelect from './SELECT/DaySelect';
+import { Paper, Grid } from '@material-ui/core';
 import './App.css';
-import Body from './Controller';
-import BodyInput from './BodyInput';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: [
-        { id: 0, day: "20211216", part: "머리", symptom: "지끈거림", intensity: 8 },
-        { id: 1, day: "20211217", part: "가슴", symptom: "답답함", intensity: 3 },
-      ],
+      Result: { day: "", part: "", symptom: "", intensity: "" }
     };
   }
 
   render() {
-    var Items = this.state.items.map((item,idx) => (
-      <Body item={item} key={item.id} />
-    ));
     return (
       <div className='return'> 
-        <BodyInput />
-        {Items}
+
+        <DaySelect onaddDate={function(date) {
+          this.setState({
+            Result: { day: date }
+          });
+          console.log("넘어온 매개변수: " + date);
+          console.log("저장된 state: " + this.state.Result.day);
+        }.bind(this)} />
+
+        <Grid item xs={4}>
+          <Paper elevation={3}>
+            <p>날짜: {this.state.Result.day}</p>
+            <p>부위: {this.state.Result.part}</p>
+            <p>증상: {this.state.Result.symptom}</p>
+            <p>강도: {this.state.Result.intensity}</p>
+          </Paper>
+        </Grid>
       </div>
     );
   }
