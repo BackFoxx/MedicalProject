@@ -4,6 +4,7 @@ import DaySelect from './SELECT/DaySelect';
 import { Paper, Grid } from '@material-ui/core';
 import './App.css';
 import PartSelect from './SELECT/PartSelect';
+import SymptomAndIntensity_Select from './SELECT/SymptomSelect';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class App extends React.Component {
 
         <DaySelect onaddDate={function(arg) { this.DaySelect(arg) }.bind(this)} />
         <PartSelect onaddPart={function(arg) { this.PartSelect(arg) }.bind(this)} />
+        <SymptomAndIntensity_Select part={this.state.Result.part} />
 
         <Grid item xs={4}>
           <Paper elevation={3}>
