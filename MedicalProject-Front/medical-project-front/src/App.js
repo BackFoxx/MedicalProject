@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
+import React, { useState } from 'react';
 import DaySelect from './SELECT/DaySelect';
 import { Paper, Grid } from '@material-ui/core';
 import './App.css';
+import PartSelect from './SELECT/PartSelect';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,17 +13,24 @@ class App extends React.Component {
     };
   }
 
+  DaySelect = function(arg) {
+    this.setState({
+      Result: { day: arg }
+    });
+  }.bind(this)
+
+  PartSelect = function(arg) {
+    const state = this.state.Result;
+    state.part = arg;
+    this.setState({ Result: state });
+  }.bind(this)
+
   render() {
     return (
       <div className='return'> 
 
-        <DaySelect onaddDate={function(date) {
-          this.setState({
-            Result: { day: date }
-          });
-          console.log("넘어온 매개변수: " + date);
-          console.log("저장된 state: " + this.state.Result.day);
-        }.bind(this)} />
+        <DaySelect onaddDate={function(arg) { this.DaySelect(arg) }.bind(this)} />
+        <PartSelect onaddPart={function(arg) { this.PartSelect(arg) }.bind(this)} />
 
         <Grid item xs={4}>
           <Paper elevation={3}>

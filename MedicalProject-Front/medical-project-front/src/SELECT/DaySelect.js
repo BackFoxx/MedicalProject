@@ -12,7 +12,7 @@ class DaySelect extends React.Component {
             <div>
             <Button onClick={function() {
                 var date = this.today;
-                this.props.onaddDate(date)
+                this.props.onaddDate(date);
             }.bind(this)} >시작하기</Button>
             </div>
         );
