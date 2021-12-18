@@ -26,13 +26,20 @@ class App extends React.Component {
     this.setState({ Result: state });
   }.bind(this)
 
+  ST_IN_Select = function(ST, IN) {
+    const state = this.state.Result;
+    state.symptom = ST;
+    state.intensity = IN;
+    this.setState({ Result: state });
+  }.bind(this)
+
   render() {
     return (
       <div className='return'> 
 
         <DaySelect onaddDate={function(arg) { this.DaySelect(arg) }.bind(this)} />
         <PartSelect onaddPart={function(arg) { this.PartSelect(arg) }.bind(this)} />
-        <SymptomAndIntensity_Select part={this.state.Result.part} />
+        <SymptomAndIntensity_Select onaddSTIN={function(ST, IN) { this.ST_IN_Select(ST, IN) }.bind(this)} part={this.state.Result.part} />
 
         <Grid item xs={4}>
           <Paper elevation={3}>

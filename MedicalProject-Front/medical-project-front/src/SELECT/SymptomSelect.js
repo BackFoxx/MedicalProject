@@ -13,22 +13,35 @@ class SymptomAndIntensity_Select extends React.Component {
 
     //증상 리스트
     ST_List = function() {
+        var is_disabled = false;
+        var sliderValue, num = 3;
         const lists = this.lists;
-        const STList = lists.map((list, index) => 
-                <List key={index}>
-                    <ListItem>
-                        <Checkbox />
-                        <ListItemButton sx={{ width: 160 }}>
-                            <ListItemText>{list}</ListItemText>
-                        </ListItemButton>
+        var STList = [];
+        var i = 0;
+        while(i < lists.length) {                
+            STList.push(
+            <List key={i}>
+                <ListItem>
+                    <Checkbox />
+                    <ListItemButton sx={{ width: 160 }}>
+                        <ListItemText>{lists[i]}</ListItemText>
+                    </ListItemButton>
 
-                        <Slider aria-label="Temperature" defaultValue={3} valueLabelDisplay="auto" step={1} marks min={1} max={10} disabled={true} />
+                    <Slider onChange={ (e, val) => sliderValue = val } color="secondary" defaultValue={3} valueLabelDisplay="auto" step={1} marks min={1} max={10} disabled={is_disabled} />
 
-                        <Button disabled={true}>추가</Button>
-                    </ListItem>
-                </List>
-        )
+                    <Button value={i} onClick={function(e) { this.Add(e.target.value, sliderValue) }.bind(this) }>추가</Button>
+                </ListItem>
+            </List>
+            );
+            ++i;
+        }
+
         return( <ul>{STList}</ul> );
+    }.bind(this)
+
+    //추가 버튼
+    Add = function(num, value) {
+        this.props.onaddSTIN(this.lists[num], value);
     }.bind(this)
 
     render() {
