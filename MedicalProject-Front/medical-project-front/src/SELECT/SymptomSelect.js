@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { List, ListItem, ListItemButton, ListItemText, Checkbox, Grid, Slider, Button } from "@mui/material";
 
 class SymptomAndIntensity_Select extends React.Component {
@@ -21,11 +21,13 @@ class SymptomAndIntensity_Select extends React.Component {
             STList.push(
             <List key={i}>
                 <ListItem>
+                    <Checkbox value={i} onChange={ (e) => this.onCheckBoxClick(e.target.value) }/>
                     <ListItemButton sx={{ width: 160 }}>
                         <ListItemText>{lists[i]}</ListItemText>
                     </ListItemButton>
 
-                    <Slider onChange={ (e, val) => sliderValue = val } color="secondary" defaultValue={3} valueLabelDisplay="auto" step={1} marks min={1} max={10} />
+                    <Slider id={"Slider"+i} onChange={ (e, val) => sliderValue = val } color="secondary" defaultValue={3} 
+                    valueLabelDisplay="auto" step={1} marks min={1} max={10} disabled={true}/>
 
                     <Button value={i} onClick={function(e) { this.Add(e.target.value, sliderValue) }.bind(this) }>추가</Button>
                 </ListItem>
@@ -35,6 +37,16 @@ class SymptomAndIntensity_Select extends React.Component {
         }
 
         return( <ul>{STList}</ul> );
+    }.bind(this)
+
+
+    //체크박스 누르면 버튼/슬라이더 비활성화
+    onCheckBoxClick = function(value) {
+        var Class = document.getElementById("Slider"+value).className;
+        var Disabled = ' Mui-disabled ';
+        if(Class.indexOf(Disabled) === -1) { document.getElementById("Slider"+value).className += Disabled; }
+            else { document.getElementById("Slider"+value).classList.remove("Mui-disabled"); }
+        console.log(document.getElementById("Slider"+value).className);
     }.bind(this)
 
     //추가 버튼
