@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("test")
-public class TestController {
+public class PartController {
 
     @Autowired
     private PartService partService;
 
-    @GetMapping("/todo")
+    @GetMapping
     public ResponseEntity<?> test() {
         PartEntity str = partService.testservice();
         List<PartEntity> list = new ArrayList<>();

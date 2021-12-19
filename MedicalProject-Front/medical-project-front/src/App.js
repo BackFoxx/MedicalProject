@@ -13,6 +13,29 @@ class App extends React.Component {
     };
   }
 
+  //ComponentDidMount
+  componentDidMount() {
+    const requestOptions = {
+      method: "GET",
+      headers: {"content-Type": "application/json"},
+    };
+
+    fetch("http://localhost:8080/test", requestOptions)
+      .then((response) => response.json())
+      .then(
+        (response) => {
+          this.setState({
+            Results: response.data,
+          })
+        },
+        (error) => {
+          this.setState({
+            error,
+          });
+        }
+      );
+  }
+
   //저장
   Save = function(SL) {
     const Item = this.state.Results;
@@ -42,5 +65,7 @@ class App extends React.Component {
     );
   }
 }
+
+
 
 export default App;
