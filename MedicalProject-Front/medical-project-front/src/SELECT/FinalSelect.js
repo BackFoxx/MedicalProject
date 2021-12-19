@@ -13,14 +13,19 @@ class FinalSelect extends React.Component {
   }
 
   DaySelect = function(arg) {
-    this.setState({
-      Result: { day: arg }
-    });
+    const state = this.state.Result;
+    state.day = arg;
+    state.part = "";
+    state.symptom = "";
+    state.intensity = "";
+    this.setState({ Result: state });
   }.bind(this)
 
   PartSelect = function(arg) {
     const state = this.state.Result;
     state.part = arg;
+    state.symptom = "";
+    state.intensity = "";
     this.setState({ Result: state });
   }.bind(this)
 
@@ -32,6 +37,11 @@ class FinalSelect extends React.Component {
   }.bind(this)
 
   Save = function() {
+    if(this.state.Result.part === "" || this.state.Result.day === "" || this.state.Result.symptom === "" || this.state.Result.intensity === "") {
+        alert("입력되지 않은 정보가 있어요!");
+        return;
+      }
+
     const SL = this.state.Result;
     this.props.Save(SL);
     this.setState({

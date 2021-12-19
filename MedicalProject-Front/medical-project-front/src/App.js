@@ -18,7 +18,15 @@ class App extends React.Component {
     const Item = this.state.Results;
     Item.push(SL);
     this.setState({ Results: Item });
-    console.log(Item);
+  }.bind(this)
+
+  //삭제
+  Delete = function(DL) {
+    const Item = this.state.Results;
+    console.log(Item)
+    const Filtered = Item.filter(e => e.day !== DL.day);
+    this.setState({ Results: Filtered });
+    console.log(Filtered)
   }.bind(this)
 
   render() {
@@ -27,7 +35,7 @@ class App extends React.Component {
         <FinalSelect Save={this.Save} />
         <List>
           {this.state.Results.map((Result, idx) => (
-            <R_Lists Results={Result} key={Result.day} />
+            <R_Lists onDelete={this.Delete} Results={Result} key={Result.day} />
           ))}
         </List>
       </div>
