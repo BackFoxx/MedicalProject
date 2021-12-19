@@ -4,6 +4,7 @@ import React from 'react';
 import './App.css';
 import FinalSelect from './SELECT/FinalSelect';
 import R_Lists from './SELECT/List';
+import { call } from './service/ApiService';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,41 +16,20 @@ class App extends React.Component {
 
   //ComponentDidMount
   componentDidMount() {
-    const requestOptions = {
-      method: "GET",
-      headers: {"content-Type": "application/json"},
+    call("/test", "GET", null)
+      .then((response) => this.setState({ Results: response.data }));
     };
-
-    fetch("http://localhost:8080/test", requestOptions)
-      .then((response) => response.json())
-      .then(
-        (response) => {
-          this.setState({
-            Results: response.data,
-          })
-        },
-        (error) => {
-          this.setState({
-            error,
-          });
-        }
-      );
-  }
 
   //저장
   Save = function(SL) {
-    const Item = this.state.Results;
-    Item.push(SL);
-    this.setState({ Results: Item });
+    call("/test", "POST", SL)
+      .then((response) => this.setState({ Results: response.data }));
   }.bind(this)
 
   //삭제
   Delete = function(DL) {
-    const Item = this.state.Results;
-    console.log(Item)
-    const Filtered = Item.filter(e => e.day !== DL.day);
-    this.setState({ Results: Filtered });
-    console.log(Filtered)
+    call("/test", "DELETE", DL)
+      .then((response) => this.setState({ Results: response.data }));
   }.bind(this)
 
   render() {

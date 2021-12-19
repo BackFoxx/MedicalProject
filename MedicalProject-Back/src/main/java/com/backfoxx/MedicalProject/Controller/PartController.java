@@ -33,7 +33,7 @@ public class PartController {
         try {
             String temporaryuserid = "temporary";
             PartEntity entity = PartDTO.toEntity(dto);
-            entity.setId(null);
+            entity.setDay(null);
             entity.setUserId(temporaryuserid);
             List<PartEntity> list = partService.create(entity);
             List<PartDTO> dtos = list.stream().map(PartDTO::new).collect(Collectors.toList());

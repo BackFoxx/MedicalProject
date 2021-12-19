@@ -16,11 +16,11 @@ public class PartService {
 
     public PartEntity testservice() {
         //Entity 생성
-        PartEntity entity = PartEntity.builder().day(20211216).part("가슴").symptom("지끈거림").intensity(9).build();
+        PartEntity entity = PartEntity.builder().day("20211216").part("가슴").symptom("지끈거림").intensity(9).build();
         //Entity 저장
         partRepository.save(entity);
         //Entity 검색
-        PartEntity savedEntity = partRepository.findById(entity.getId()).get();
+        PartEntity savedEntity = partRepository.findById(entity.getDay()).get();
         return savedEntity;
     }
 
@@ -28,7 +28,7 @@ public class PartService {
         valiate(entity);
 
         partRepository.save(entity);
-        log.info("Entity Id : {} is saved", entity.getId());
+        log.info("Entity Id : {} is saved", entity.getDay());
 
         return partRepository.findByUserId(entity.getUserId());
     }
