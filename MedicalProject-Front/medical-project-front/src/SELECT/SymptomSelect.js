@@ -1,5 +1,6 @@
 import React from "react";
 import { List, ListItem, ListItemButton, ListItemText, Checkbox, Grid, Slider, Button } from "@mui/material";
+import { FamilyRestroomTwoTone } from "@mui/icons-material";
 
 class SymptomAndIntensity_Select extends React.Component {
     lists = [];
@@ -26,10 +27,10 @@ class SymptomAndIntensity_Select extends React.Component {
                         <ListItemText>{lists[i]}</ListItemText>
                     </ListItemButton>
 
-                    <Slider id={"Slider"+i} onChange={ (e, val) => sliderValue = val } color="secondary" defaultValue={3} 
-                    valueLabelDisplay="auto" step={1} marks min={1} max={10} disabled={true}/>
+                    <Slider id={"STList_Slider"+i} onChange={ (e, val) => sliderValue = val } color="secondary" defaultValue={3} 
+                    valueLabelDisplay="auto" step={1} marks min={1} max={10} disabled={false}/>
 
-                    <Button value={i} onClick={function(e) { this.Add(e.target.value, sliderValue) }.bind(this) }>추가</Button>
+                    <Button id={"STList_btn"+i} value={i} disabled={false} onClick={function(e) { this.Add(e.target.value, sliderValue) }.bind(this) }>추가</Button>
                 </ListItem>
             </List>
             );
@@ -39,15 +40,21 @@ class SymptomAndIntensity_Select extends React.Component {
         return( <ul>{STList}</ul> );
     }.bind(this)
 
+    // //체크박스 누르면 버튼/슬라이더 비활성화
+    // onCheckBoxClick = function(value) {
+    //     var Class = document.getElementById("STList_Slider"+value).className;
 
-    //체크박스 누르면 버튼/슬라이더 비활성화
-    onCheckBoxClick = function(value) {
-        var Class = document.getElementById("Slider"+value).className;
-        var Disabled = ' Mui-disabled ';
-        if(Class.indexOf(Disabled) === -1) { document.getElementById("Slider"+value).className += Disabled; }
-            else { document.getElementById("Slider"+value).classList.remove("Mui-disabled"); }
-        console.log(document.getElementById("Slider"+value).className);
-    }.bind(this)
+    //     if(Class.disabled === false) { 
+    //         document.getElementById("STList_Slider"+value).setAttribute('disabled','{true}');
+    //         document.getElementById("STList_btn"+value).setAttribute('disabled','{true}');
+    //         console.log(document.getElementById("STList_btn"+value)); }
+    //         else { 
+    //             document.getElementById("STList_Slider"+value).setAttribute('disabled','{false}'); 
+    //             document.getElementById("STList_btn"+value).removeAttribute("disabled"); 
+    //             console.log(document.getElementById("STList_btn"+value)); }
+        
+                
+    // }.bind(this)
 
     //추가 버튼
     Add = function(num, value) {
