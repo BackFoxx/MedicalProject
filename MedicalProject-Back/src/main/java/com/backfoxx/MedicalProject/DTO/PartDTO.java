@@ -12,13 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class PartDTO {
-    private String day;
+    private String id;
+    private long day;
     private String part;
     private String symptom;
     private int intensity;
 
     //PartEntity를 DTO로 변환
     public PartDTO(final PartEntity entity) {
+        this.id = entity.getId();
         this.day = entity.getDay();
         this.part = entity.getPart();
         this.symptom = entity.getSymptom();;
@@ -27,6 +29,7 @@ public class PartDTO {
 
     public static PartEntity toEntity(final PartDTO dto) {
         return PartEntity.builder()
+                .id(dto.getId())
                 .day(dto.getDay())
                 .part(dto.getPart())
                 .symptom(dto.getSymptom())

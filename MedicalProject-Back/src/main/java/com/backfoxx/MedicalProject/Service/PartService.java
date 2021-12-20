@@ -14,23 +14,29 @@ public class PartService {
     @Autowired
     private PartRepository partRepository;
 
-    public PartEntity testservice() {
-        //Entity 생성
-        PartEntity entity = PartEntity.builder().day("20211216").part("가슴").symptom("지끈거림").intensity(9).build();
-        //Entity 저장
-        partRepository.save(entity);
-        //Entity 검색
-        PartEntity savedEntity = partRepository.findById(entity.getDay()).get();
-        return savedEntity;
+    public List<PartEntity> retrive(final String userId) {
+        return partRepository.findByUserId(userId);
     }
 
     public List<PartEntity> create(final PartEntity entity) {
         valiate(entity);
 
         partRepository.save(entity);
-        log.info("Entity Id : {} is saved", entity.getDay());
+        log.info("Entity Id : {} is saved", entity.getId());
 
         return partRepository.findByUserId(entity.getUserId());
+    }
+
+    public List<PartEntity> delete(final PartEntity entity) {
+        valiate(entity);
+        try {
+            partRepository.delete(entity);
+        } catch (Exception e) {
+            log.error("데이터 삭제 중 에러 발생: ", entity.getId(), e);
+            throw new RuntimeException("데이터 삭제 중 에러 발생: " + entity.getId());
+        }
+
+        return retrive(entity.getUserId());
     }
 
     private void valiate(final PartEntity entity) {
