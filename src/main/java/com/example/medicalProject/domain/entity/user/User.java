@@ -1,5 +1,6 @@
-package com.example.medicalProject.user.entity;
+package com.example.medicalProject.domain.entity.user;
 
+import com.example.medicalProject.domain.entity.patientInfo.PatientInfo;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,6 +21,9 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<PatientInfo> patientInfos = new ArrayList<PatientInfo>();
 }

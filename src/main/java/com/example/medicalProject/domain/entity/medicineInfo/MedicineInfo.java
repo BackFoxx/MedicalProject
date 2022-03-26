@@ -1,15 +1,15 @@
-package com.example.medicalProject.user.entity;
+package com.example.medicalProject.domain.entity.medicineInfo;
 
+import com.example.medicalProject.domain.entity.patientInfo.PatientInfo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -25,11 +25,11 @@ public class MedicineInfo {
     private String name;
     private int amount;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date prescriptionDate;
+    @CreationTimestamp
+    private Timestamp prescriptionDate;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    @CreationTimestamp
+    private Timestamp createDate;
 
     public void setPatientInfoId(PatientInfo patientInfoId) {
         if (this.patientInfoId != null) {

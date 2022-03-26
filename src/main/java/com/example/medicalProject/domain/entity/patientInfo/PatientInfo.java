@@ -1,14 +1,17 @@
-package com.example.medicalProject.user.entity;
+package com.example.medicalProject.domain.entity.patientInfo;
 
+import com.example.medicalProject.domain.entity.medicineInfo.MedicineInfo;
+import com.example.medicalProject.domain.entity.user.Status;
+import com.example.medicalProject.domain.entity.user.User;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,17 +29,16 @@ public class PatientInfo {
     private int degree;
     private String description;
 
-    @OneToMany(mappedBy = "patientInfoId")
+    @OneToMany(mappedBy = "patientInfoId", cascade = CascadeType.ALL)
     private List<MedicineInfo> medicineInfos = new ArrayList<MedicineInfo>();
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date createDate;
+    @CreationTimestamp
+    private Timestamp createDate;
 
-    public void setUser(User user) {
+    public void addUser(User user) {
         if (this.user != null) {
             this.user.getPatientInfos().remove(this);
         }
