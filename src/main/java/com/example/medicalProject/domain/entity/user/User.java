@@ -1,6 +1,8 @@
 package com.example.medicalProject.domain.entity.user;
 
 import com.example.medicalProject.domain.entity.patientInfo.PatientInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "userJsonIdentityInfoId")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

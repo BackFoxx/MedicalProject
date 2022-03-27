@@ -1,0 +1,29 @@
+{{>layout/header}}
+{{>layout/nav}}
+
+<table class="table table-hover table-striped text-center" style="border: 1px solid;">
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>증상 부위</th>
+            <th>증상 강도</th>
+            <th>부연설명</th>
+            <th>상태</th>
+            <th>생성일</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#patientInfos}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{degree}}</td>
+                <td>{{description}}</td>
+                <td>{{status}}</td>
+                <td>{{createDate}}</td>
+            </tr>
+        {{/patientInfos}}
+    </tbody>
+</table>
+
+{{>layout/footer}}

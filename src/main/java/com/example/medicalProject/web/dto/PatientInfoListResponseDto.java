@@ -14,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class PatientInfoListResponseDto {
+    private Long id;
     private User user;
     private String name;
     private int degree;
@@ -24,6 +25,7 @@ public class PatientInfoListResponseDto {
 
     @Builder
     public PatientInfoListResponseDto(PatientInfo patientInfo) {
+        this.id = patientInfo.getId();
         this.user = patientInfo.getUser();
         this.name = patientInfo.getName();
         this.degree = patientInfo.getDegree();

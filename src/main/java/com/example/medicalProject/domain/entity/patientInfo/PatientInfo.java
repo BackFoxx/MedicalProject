@@ -3,6 +3,8 @@ package com.example.medicalProject.domain.entity.patientInfo;
 import com.example.medicalProject.domain.entity.medicineInfo.MedicineInfo;
 import com.example.medicalProject.domain.entity.user.Status;
 import com.example.medicalProject.domain.entity.user.User;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "PatientInfoJsonIdentityInfoId")
 public class PatientInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

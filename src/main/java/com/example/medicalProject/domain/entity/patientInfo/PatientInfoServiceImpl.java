@@ -14,8 +14,8 @@ public class PatientInfoServiceImpl implements PatientInfoService {
     private final PatientInfoRepository patientInfoRepository;
 
     @Override
-    public List<PatientInfoListResponseDto> getPatientInfos(User user) {
-        return patientInfoRepository.findAllByUser(user).stream()
+    public List<PatientInfoListResponseDto> getPatientInfos(Long userId) {
+        return patientInfoRepository.findAllByUserId(userId).stream()
                 .map(PatientInfoListResponseDto::new).collect(Collectors.toList());
     }
 }

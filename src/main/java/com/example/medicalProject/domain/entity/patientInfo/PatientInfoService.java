@@ -7,5 +7,5 @@ import com.example.medicalProject.web.dto.PatientInfoListResponseDto;
 import java.util.List;
 
 public interface PatientInfoService {
-    List<PatientInfoListResponseDto> getPatientInfos(User user);
+    List<PatientInfoListResponseDto> getPatientInfos(Long userId);
 }

@@ -1,0 +1,15 @@
+<header class="mb-auto">
+    <div>
+        <h3 class="float-md-start mb-0"><a href="/">MadicalProject({{#loginUser.username}}{{loginUser.username}}{{/loginUser.username}})</a></h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+            {{^loginUser}}
+                <a class="nav-link active" aria-current="page" href="/loginForm">로그인</a>
+            {{/loginUser}}
+            {{#loginUser}}
+                <a class="nav-link active" aria-current="page" href="/logout">로그아웃</a>
+            {{/loginUser}}
+            <a class="nav-link" href="/patientList">내 증상</a>
+            <a class="nav-link" href="#">게시판</a>
+        </nav>
+    </div>
+</header>

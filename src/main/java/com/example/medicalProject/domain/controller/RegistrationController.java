@@ -15,7 +15,6 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String registration(UserRegistrationRequestDto user) {
-        user.setRole(Role.ROLE_DOCTOR);
         userService.registration(user);
         return "redirect:/loginForm";
     } // 실제 회원가입

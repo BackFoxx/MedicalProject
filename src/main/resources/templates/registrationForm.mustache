@@ -1,15 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>회원가입 페이지</title>
-</head>
-<body>
-<form action="/registration" method="post">
-    <input type="text" name="username" placeholder="username"> <br/>
-    <input type="email" name="email" placeholder="email"> <br/>
-    <input type="password" name="password" placeholder="password"> <br/>
-    <button>회원가입</button>
-</form>
-</body>
-</html>
+{{>layout/header}}
+{{>layout/nav}}
+<style>
+    .container {
+      max-width: 960px;
+    }
+</style>
+
+<div class="container">
+    <main>
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+            <h2>회원가입</h2>
+            <p class="lead">모든 입력항목은 필수 사항입니다.</p>
+        </div>
+
+        <div class="row g-3">
+            <div>
+                <h4 class="mb-3">유저 정보</h4>
+                <form action="/registration" method="post" class="needs-validation" novalidate>
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="username" class="form-label">유저네임</label>
+                            <div class="input-group has-validation">
+                                <span class="input-group-text">@</span>
+                                <input type="text" class="form-control" name="username" placeholder="유저네임" required>
+                                <div class="invalid-feedback">
+                                    하하
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">이메일</label>
+                            <input type="email" class="form-control" name="email" placeholder="you@example.com">
+                            <div class="invalid-feedback">
+                                히히
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">비밀번호</label>
+                            <input type="password" class="form-control" name="password" placeholder="비밀번호">
+                            <div class="invalid-feedback">
+                                히히
+                            </div>
+                        </div>
+
+                    <hr class="my-4">
+
+                    <h4 class="mb-3">권한 정하기</h4>
+
+                    <div class="my-3">
+                        <div class="form-check">
+                            <input id="user" name="roleName" type="radio" class="form-check-input" checked required>
+                            <label class="form-check-label" for="user">일반 유저</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="doctor" name="roleName" type="radio" class="form-check-input" required>
+                            <label class="form-check-label" for="doctor">의료인</label>
+                        </div>
+                        <div class="form-check">
+                            <input id="admin" name="roleName" type="radio" class="form-check-input" required>
+                            <label class="form-check-label" for="admin">관리자</label>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">회원가입</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+{{>layout/footer}}

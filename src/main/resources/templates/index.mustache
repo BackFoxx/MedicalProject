@@ -1,31 +1,5 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>index</title>
-
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-</head>
-<body class="d-flex h-100 text-center text-white bg-dark">
-
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
-        <div>
-            <h3 class="float-md-start mb-0">MadicalProject({{#loginUser.username}}{{loginUser.username}}{{/loginUser.username}})</h3>
-            <nav class="nav nav-masthead justify-content-center float-md-end">
-                {{^loginUser}}
-                    <a class="nav-link active" aria-current="page" href="/loginForm">로그인</a>
-                {{/loginUser}}
-                {{#loginUser}}
-                    <a class="nav-link active" aria-current="page" href="/logout">로그아웃</a>
-                {{/loginUser}}
-                <a class="nav-link" href="/patientInfo">내 증상</a>
-                <a class="nav-link" href="#">게시판</a>
-            </nav>
-        </div>
-    </header>
+{{>layout/header}}
+{{>layout/nav}}
 
     <main class="px-3">
         <h1>Cover your page.</h1>
@@ -35,12 +9,4 @@
         </p>
     </main>
 
-    <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
-    </footer>
-</div>
-
-<script src="/js/bootstrap.bundle.min.js" />
-<script src="/js/bootstrap.bundle.min.js" />
-</body>
-</html>
+{{>layout/footer}}

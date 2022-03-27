@@ -1,15 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>로그인 페이지</title>
-</head>
-<body>
-<form action="/login" method="post">
-    <input type="text" name="username" placeholder="username"> <br/>
-    <input type="password" name="password" placeholder="password"> <br/>
-    <button>로그인</button>
-</form>
-<a href="/registrationForm">회원가입을 하지 않으셨나요?</a>
-</body>
-</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>로그인 페이지</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/login" method="post">-->
+<!--    <input type="text" name="username" placeholder="username"> <br/>-->
+<!--    <input type="password" name="password" placeholder="password"> <br/>-->
+<!--    <button>로그인</button>-->
+<!--</form>-->
+<!--<a href="/registrationForm">회원가입을 하지 않으셨나요?</a>-->
+
+{{>layout/header}}
+<link href="/css/loginForm.css" rel="stylesheet" />
+{{>layout/nav}}
+
+
+<main class="form-signin">
+    <form action="/login" method="post">
+        <img class="mb-4" src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">로그인</h1>
+
+        <div class="form-floating">
+            <input type="test" name="username" class="form-control" placeholder="name@example.com">
+            <label for="floatingInput">유저네임</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+            <label for="floatingPassword">비밀번호</label>
+        </div>
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+        <a class="w-100 btn btn-lg btn-primary" href="/registrationForm" type="button">회원가입</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+    </form>
+</main>
+
+{{>layout/footer}}
