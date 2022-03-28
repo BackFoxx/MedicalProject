@@ -13,9 +13,15 @@
 <!--<a href="/registrationForm">회원가입을 하지 않으셨나요?</a>-->
 
 {{>layout/header}}
-<link href="/css/loginForm.css" rel="stylesheet" />
 {{>layout/nav}}
+<link href="/css/loginForm.css" rel="stylesheet" />
 
+{{#error}}
+    <script type="text/javascript">
+        alert("{{error}}");
+        location.href = "/";
+    </script>
+{{/error}}
 
 <main class="form-signin">
     <form action="/login" method="post">

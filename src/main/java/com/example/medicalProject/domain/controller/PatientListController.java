@@ -24,7 +24,8 @@ public class PatientListController {
             return "patientList";
         } catch (NullPointerException e) {
             // 로그인되지 않은 상태로 접속하여 생기는 예외
-            return "redirect:/loginForm";
+            model.addAttribute("error", "로그인 후 이용해주세요!!");
+            return "patientList";
         }
     }
 }

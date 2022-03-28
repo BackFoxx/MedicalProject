@@ -45,9 +45,6 @@ public class UserRepositoryTest {
         PatientInfo patientInfo2 = new PatientInfo();
 //        patientInfo2.setDescription("안 아파요");
 
-        patientInfo1.addUser(user);
-        patientInfo2.addUser(user);
-
         //when
 
         userRepository.save(user);

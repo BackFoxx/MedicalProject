@@ -31,12 +31,18 @@ public class IndexController {
     } // 메인화면
 
     @GetMapping("/loginForm")
-    public String loginForm() {
+    public String loginForm(Model model, @AuthenticationPrincipal PrincipalDetails user) {
+        if (user != null) {
+            model.addAttribute("error", "이미 로그인되어 있지 않습니까!");
+        }
         return "loginForm";
     } // 로그인 화면
 
     @GetMapping("/registrationForm")
-    public String registrationForm() {
+    public String registrationForm(Model model, @AuthenticationPrincipal PrincipalDetails user) {
+        if (user != null) {
+            model.addAttribute("error", "이미 로그인되어 있지 않습니까!");
+        }
         return "registrationForm";
     } // 회원가입 화면
 }

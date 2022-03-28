@@ -1,6 +1,13 @@
 {{>layout/header}}
 {{>layout/nav}}
 
+{{#error}}
+    <script type="text/javascript">
+        alert("{{error}}");
+        location.href = "/loginForm";
+    </script>
+{{/error}}
+
 <table class="table table-hover table-striped text-center" style="border: 1px solid;">
     <thead>
         <tr>
@@ -10,6 +17,7 @@
             <th>부연설명</th>
             <th>상태</th>
             <th>생성일</th>
+            <th>복용 약</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +29,7 @@
                 <td>{{description}}</td>
                 <td>{{status}}</td>
                 <td>{{createDate}}</td>
+                <td>리스트 펼치기</td>
             </tr>
         {{/patientInfos}}
     </tbody>

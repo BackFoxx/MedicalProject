@@ -5,6 +5,12 @@
       max-width: 960px;
     }
 </style>
+{{#error}}
+    <script type="text/javascript">
+        alert("{{error}}");
+        location.href = "/";
+    </script>
+{{/error}}
 
 <div class="container">
     <main>
@@ -53,16 +59,13 @@
 
                     <div class="my-3">
                         <div class="form-check">
-                            <input id="user" name="roleName" type="radio" class="form-check-input" checked required>
-                            <label class="form-check-label" for="user">일반 유저</label>
+                            <label class="form-check-label"><input value="user" name="roleName" type="radio" class="form-check-input" checked required> 일반 유저</label>
                         </div>
                         <div class="form-check">
-                            <input id="doctor" name="roleName" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="doctor">의료인</label>
+                            <label class="form-check-label"><input value="doctor" name="roleName" type="radio" class="form-check-input" required> 의료인</label>
                         </div>
                         <div class="form-check">
-                            <input id="admin" name="roleName" type="radio" class="form-check-input" required>
-                            <label class="form-check-label" for="admin">관리자</label>
+                            <label class="form-check-label"><input value="admin" name="roleName" type="radio" class="form-check-input" required> 관리자</label>
                         </div>
                     </div>
 

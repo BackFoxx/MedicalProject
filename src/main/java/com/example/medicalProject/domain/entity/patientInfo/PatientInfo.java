@@ -18,7 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "PatientInfoJsonIdentityInfoId")
 public class PatientInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,12 +39,4 @@ public class PatientInfo {
 
     @CreationTimestamp
     private Timestamp createDate;
-
-    public void addUser(User user) {
-        if (this.user != null) {
-            this.user.getPatientInfos().remove(this);
-        }
-        this.user = user;
-        user.getPatientInfos().add(this);
-    }
 }
